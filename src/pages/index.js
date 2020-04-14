@@ -5,11 +5,19 @@ import { Link, graphql } from "gatsby"
 import { OutboundLink } from "gatsby-plugin-google-analytics"
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import PostLink from "../components/post-link";
 
-const IndexPage = ({ data }) => (
+const IndexPage = ({ data }) => {
+  const Posts = data.allMarkdownRemark.edges
+  .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
+  .map(edge => (<div><PostLink key={edge.node.id} post={edge.node} />{edge.node.excerpt}</div>));
+
+return(
   <Layout>
     <SEO title="Home" />
     <SEO description={data.site.siteMetadata.description} />
+
+
 
     <h1>Hello, I'm Chris</h1>
 
@@ -42,6 +50,11 @@ const IndexPage = ({ data }) => (
         Github
       </OutboundLink>
     </p>
+
+    <h1>Posts</h1>
+    <div>
+      {Posts}
+    </div>
 
     <h1>Projects</h1>
     <p>This is what I'm doing currently:</p>
@@ -91,17 +104,31 @@ const IndexPage = ({ data }) => (
     </ul>
 
   </Layout>
-)
+);
+}
 
 export default IndexPage
 
 export const pageQuery = graphql`
     query HomePageQuery {
-      site {
-        siteMetadata {
+  site {
+    siteMetadata {
+      title
+      author
+    }
+  }
+  allMarkdownRemark(sort: {order: DESC, fields: [frontmatter___date]}) {
+    edges {
+      node {
+        id
+        excerpt(pruneLength: 250)
+        frontmatter {
+          date(formatString: "MMMM DD, YYYY")
+          path
           title
-          author
         }
       }
+    }
+  }
     }
   `
