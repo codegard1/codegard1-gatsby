@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "codegard1-gatsby",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Personal website for Chris Odegard",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Chris Odegard <c.odegard@gmail.com>",
   "dependencies": {
     "gatsby": "^2.20.12",
     "gatsby-image": "^2.3.1",
@@ -19,6 +19,7 @@
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
+    "axios": "^0.19.2",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -36,9 +37,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/codegard1/codegard1-gatsby"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/codegard1/codegard1-gatsby/issues"
   }
 }
