@@ -3,22 +3,46 @@
  *
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
+const path = require('path');
 
-const axios = require("axios")
-const get = endpoint => axios.get(`https://pokeapi.co/api/v2${endpoint}`)
-const getPokemonData = names =>
-  Promise.all(
-    names.map(async name => {
-      const { data: pokemon } = await get(`/pokemon/${name}`)
-      return { ...pokemon }
-    })
-  )
+exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => {
 
-exports.createPages = async ({ actions: { createPage } }) => {
+  const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`)
+
+  const result = await graphql(`
+  {
+    allMarkdownRemark(
+      sort: {order: DESC, fields: [frontmatter___date]}, 
+      limit: 1000) {
+        edges {
+          node {
+            frontmatter {
+              path
+            }
+          }
+        }
+    }
+  }
+  `);
+
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+    createPage({
+      path: node.frontmatter.path,
+      component: blogPostTemplate,
+      context: {}, // additional data can be passed via context
+    });
+  });
+
   createPage({
     path: "/no-data/",
     component: require.resolve("./src/templates/no-data.js"),
-  })
+  });
 
   createPage({
     path: "/page-with-context/",
@@ -28,9 +52,9 @@ exports.createPages = async ({ actions: { createPage } }) => {
       content: "<p>This is page content.</p><p>No GraphQL required!</p>",
       additionalData: "Yolo",
     },
-  })
+  });
 
-  const products = require("./data/products.json")
+  const products = require("./src/data/products.json")
   products.forEach(product => {
     createPage({
       path: `/product/${product.slug}/`,
@@ -44,11 +68,38 @@ exports.createPages = async ({ actions: { createPage } }) => {
     })
   })
 
-  // const allPokemon = await getPokemonData(["pikachu", "charizard", "squirtle"]);
-  // // Create a page that lists Pokémon.
-  // createPage({
-  //   path: `/`,
-  //   component: require.resolve("./src/templates/all-pokemon.js"),
-  //   context: { allPokemon },
-  // });
+  const learnings = require("./src/data/learnings.json");
+  learnings.forEach(learning => {
+    createPage({
+      path: `/learning/${learning.key}/`,
+      component: require.resolve("./src/templates/learning.js"),
+      context: {
+        id: learning.key,
+        work: learning.work || "",
+        notes: learning.notes || "",
+        date: learning.date
+      }
+    });
+  });
+
+
+
+}
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+  type LearningJson implements Node @dontInfer{
+    key: ID
+    date: Date
+    work: [Work]
+    notes: [Note]
+  }
+  type Work {
+    work: String
+  }
+  type Note {
+    note: String
+  }
+  `
 }

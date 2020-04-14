@@ -25,23 +25,24 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
+
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByPath($path: String!) {
-    site {
-      siteMetadata {
-        title
-        author
+    query BlogPostByPath($path: String!) {
+      site {
+        siteMetadata {
+          title
+          author
+        }
+      }
+      markdownRemark(frontmatter: { path: { eq: $path } }) {
+        id
+        html
+        frontmatter {
+          title
+          date(formatString: "MMMM DD, YYYY")
+        }
       }
     }
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
-      id
-      html
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-      }
-    }
-  }
-`
+  `
