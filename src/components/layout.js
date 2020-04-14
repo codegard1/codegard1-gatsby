@@ -8,9 +8,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { Fabric } from "office-ui-fabric-react/lib/Fabric";
 import Header from "./header"
 import "./layout.css"
+import "office-ui-fabric-react/dist/css/fabric.min.css";
+import { initializeIcons } from "@uifabric/icons";
+
+/* Initialize Fabric Icons */
+initializeIcons();
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,7 +29,7 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <>
+    <Fabric>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -36,7 +41,7 @@ const Layout = ({ children }) => {
         <main>{children}</main>
         <footer>© {new Date().getFullYear()}</footer>
       </div>
-    </>
+    </Fabric>
   )
 }
 
