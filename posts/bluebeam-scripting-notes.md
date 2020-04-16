@@ -1,7 +1,8 @@
 ---
 title: "Bluebeam Scripting Notes"
+tags: ["bluebeam","javascript"]
+published: true
 date: "2020-04-15"
-path: "/notes/bluebeam-scripting-notes"
 ---
 
 # Scripting in Bluebeam Revu

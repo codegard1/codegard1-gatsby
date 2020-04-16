@@ -1,105 +1,106 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-const path = require('path');
+const path = require(`path`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
+const _ = require("lodash")
 
-exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode, basePath: `pages` })
+    createNodeField({
+      node,
+      name: `slug`,
+      value: slug,
+    })
+  }
+}
 
-  const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`)
-
-  const result = await graphql(`
-  {
-    allMarkdownRemark(
-      sort: {order: DESC, fields: [frontmatter___date]}, 
-      limit: 1000) {
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  return graphql(`
+    {
+      allMarkdownRemark {
         edges {
           node {
             frontmatter {
-              path
+              tags
+            }
+            fields {
+              slug
             }
           }
         }
-    }
-  }
-  `);
-
-  // Handle errors
-  if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
-  }
-
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.path,
-      component: blogPostTemplate,
-      context: {}, // additional data can be passed via context
-    });
-  });
-
-  createPage({
-    path: "/no-data/",
-    component: require.resolve("./src/templates/no-data.js"),
-  });
-
-  createPage({
-    path: "/page-with-context/",
-    component: require.resolve("./src/templates/with-context.js"),
-    context: {
-      title: "We Don’t Need No Stinkin’ GraphQL!",
-      content: "<p>This is page content.</p><p>No GraphQL required!</p>",
-      additionalData: "Yolo",
-    },
-  });
-
-  const products = require("./src/data/products.json")
-  products.forEach(product => {
-    createPage({
-      path: `/product/${product.slug}/`,
-      component: require.resolve("./src/templates/product.js"),
-      context: {
-        title: product.title,
-        description: product.description,
-        image: product.image,
-        price: product.price,
-      },
-    })
-  })
-
-  const learnings = require("./src/data/learnings.json");
-  learnings.forEach(learning => {
-    createPage({
-      path: `/learning/${learning.key}/`,
-      component: require.resolve("./src/templates/learning.js"),
-      context: {
-        id: learning.key,
-        work: learning.work || "",
-        notes: learning.notes || "",
-        date: learning.date
       }
-    });
-  });
+    }
+  `).then(result => {
 
+        const posts = result.data.allMarkdownRemark.edges
+        posts.forEach(({ node }) => {
+          createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/blog-post.js`),
+            context: {
+              // Data passed to context is available
+              // in page queries as GraphQL variables.
+              slug: node.fields.slug,
+            },
+          })
+        })
 
+        // Tag pages:
+        let tags = []
+        // Iterate through each post, putting all found tags into `tags`
+        _.each(posts, edge => {
+          if (_.get(edge, "node.frontmatter.tags")) {
+            tags = tags.concat(edge.node.frontmatter.tags)
+          }
+        })
 
-}
+        // Eliminate duplicate tags
+        tags = _.uniq(tags)
 
-exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions;
-  const typeDefs = `
-  type LearningJson implements Node @dontInfer{
-    key: ID
-    date: Date
-    work: [Work]
-    notes: [Note]
+        // Make tag pages
+        tags.forEach(tag => {
+          createPage({
+            path: `/tags/${_.kebabCase(tag)}/`,
+            component: path.resolve("src/templates/tag.js"),
+            context: {
+              tag,
+            },
+          })
+        })
+
+        const postsPerPage = 3
+        const numPages = Math.ceil(posts.length / postsPerPage)
+
+        Array.from({ length: numPages }).forEach((_, i) => {
+          createPage({
+            path: i === 0 ? `/` : `/${i+1}`,
+            component: path.resolve("./src/templates/post-list.js"),
+            context: {
+              limit: postsPerPage,
+              skip: i*postsPerPage, 
+              numPages,
+              currentPage: i+1
+            }
+          })
+        })
+    })
   }
-  type Work {
-    work: String
+
+  exports.createSchemaCustomization = ({ actions }) => {
+    const { createTypes } = actions;
+    const typeDefs = `
+    type LearningJson implements Node @dontInfer{
+      key: ID
+      date: Date
+      work: [Work]
+      notes: [Note]
+    }
+    type Work {
+      work: String
+    }
+    type Note {
+      note: String
+    }
+    `
   }
-  type Note {
-    note: String
-  }
-  `
-}
