@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-developer-diary",
+  "name": "codegard1-gatsby",
   "private": true,
-  "description": "A Gatsby blog template designed for web developers. Blazing fast, it includes beautful web developer topic tags and social-media links",
+  "description": "Personal website for Chris Odegard",
   "version": "0.1.0",
-  "author": "willjw3 <https://github.com/willjw3>",
+  "author": "codegard1 <https://github.com/codegard1>",
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "bootstrap": "^4.3.1",
@@ -53,7 +53,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/codegard1/codegard1-gatsby"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
