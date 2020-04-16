@@ -101,7 +101,7 @@ module.exports = {
         pageTransitionDelay: 0,
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-        cookieDomain: "codegard1.com",
+        cookieDomain: "christopherodegard.com",
       },
     }
     // this (optional) plugin enables Progressive Web App + Offline functionality

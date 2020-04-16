@@ -1,7 +1,7 @@
 "use strict"
 
 module.exports = {
-  url: "http://codegard1.com",
+  url: "https://christopherodegard.com/",
   title: "Codegard1",
   tagline: "I have a website",
   copyright: `© ${new Date().getFullYear()} Chris Odegard, All rights reserved`,
