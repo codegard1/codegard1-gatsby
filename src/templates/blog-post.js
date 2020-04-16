@@ -6,7 +6,7 @@ import "./blog-post.css"
 
 import Sidebar from "../components/sidebar/Sidebar"
 import TechTag from "../components/tags/TechTag"
-import CustomShareBlock from "../components/CustomShareBlock"
+// import CustomShareBlock from "../components/CustomShareBlock"
 
 const BlogPost = (props) => {
   const post = props.data.markdownRemark
@@ -46,7 +46,6 @@ const BlogPost = (props) => {
             <br />
             <small><i>Published on </i> {post.frontmatter.date}</small>
             <div dangerouslySetInnerHTML={{ __html: post.html }} />
-            <CustomShareBlock title={post.frontmatter.title} siteName={siteName} url={url} />
           </div>
         </div>
       </div>
