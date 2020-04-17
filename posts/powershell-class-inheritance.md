@@ -1,7 +1,7 @@
 ---
 tags:
   - powershell
-published: false
+published: true
 date: 2020-04-16T22:15:52.555Z
 title: PowerShell Class Inheritance
 ---
@@ -11,17 +11,10 @@ PowerShell classes support inheritance, which allows you to create a base class 
 
 ```powershell
 class Rock {
-    # Properties
-    [String]$Size
-    [Float]$Weight
-    [Bool]$IsShiny
-
-    # Constructor 
-    Rock( [Size]$Size, [Weight]$Weight, [IsShiny]$IsShiny ){
-        $This.Size = $Size
-        $This.Weight = $Weight
-        $This.IsShiny = $IsShiny
-    }
+  # Properties
+  [String]$Size
+  [Float]$Weight
+  [Bool]$IsShiny
 }
 ```
 
@@ -31,16 +24,26 @@ Inheritance is signaled by `: ParentClassName` in the class signature. The inher
 
 ```powershell
 class Pebble : Rock {
-    [Int]$SmoothnessIndex
+  [Int]$SmoothnessIndex
 
-    [Bool]IsSmoothAndHeavy(){
-        If( $This.Weight -gt 5 -and $This.SmoothnessIndex -gt 0.87 ){
-            Return $True;
-        } else {
-            Return $False;
-        }
+  [Bool]IsSmoothAndHeavy() {
+    If ( $This.Weight -gt 5 -and $This.SmoothnessIndex -gt 0.87 ) {
+      Return $True;
     }
+    else {
+      Return $False;
+    }
+  }
+
+  # Constructor 
+  Pebble( [String]$Size, [Float]$Weight, [Bool]$IsShiny, [Int]$SmoothnessIndex ) {
+    $This.Size = $Size
+    $This.Weight = $Weight
+    $This.IsShiny = $IsShiny
+    $This.SmoothnessIndex = $SmoothnessIndex
+  }
 }
 
-$Pebster = [Pebble]::new()
+$Pebster = [Pebble]::new("Large", 1.01, $False, 2)
+$Pebster.IsSmoothAndHeavy() #False
 ```
