@@ -97,10 +97,10 @@ module.exports = {
       options: {
         trackingId: "UA-124497950-1",
         // Defines where to place the tracking script - `true` in the head and `false` in the body
-        head: false,
-        pageTransitionDelay: 0,
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
+        head: true,
+        // pageTransitionDelay: 0,
+        // sampleRate: 5,
+        // siteSpeedSampleRate: 10,
         cookieDomain: "christopherodegard.com",
       },
     }

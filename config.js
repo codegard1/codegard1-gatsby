@@ -3,10 +3,10 @@
 module.exports = {
   url: "https://christopherodegard.com/",
   title: "Codegard1",
-  tagline: "I have a website",
+  tagline: "I have a dev blog",
   copyright: `© ${new Date().getFullYear()} Chris Odegard, All rights reserved`,
   author: {
-    name: "Chris odegard",
+    name: "Chris Odegard",
     bio: "Self-taught web developer and data scientist",
     contacts: {
       linkedin: "https://www.linkedin.com/in/codegard1",
