@@ -59,3 +59,5 @@ Set-UnifiedGroup $g.id -RequireSenderAuthenticationEnabled $false
 ```powershell
 Exit-PSSession
 ```
+
+Source: [Set-UnifiedGroup (Exchange PowerShell)](https://docs.microsoft.com/en-us/powershell/module/exchange/users-and-groups/set-unifiedgroup?view=exchange-ps)
