@@ -9,8 +9,8 @@ title: Open Asset REST API Notes
 ## Modifying the GPS coordinates of a File
 
 You can view the location data for a file with the `withLocation=1` query parameter in a GET request like in the examples below:
-- https://<tenant>.openasset.com/REST/1/Files?withLocation=1
-- https://<tenant>.openasset.com/REST/1/Files/{file_id}?withLocation=1
+- `https://tenant.openasset.com/REST/1/Files?withLocation=1`
+- `https://tenant.openasset.com/REST/1/Files/{file_id}?withLocation=1`
 
 This will either return the location field which can be empty of have prexisting data:
 ```js
