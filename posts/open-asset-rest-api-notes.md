@@ -12,7 +12,7 @@ You can view the location data for a file with the `withLocation=1` query parame
 - `https://tenant.openasset.com/REST/1/Files?withLocation=1`
 - `https://tenant.openasset.com/REST/1/Files/{file_id}?withLocation=1`
 
-This will either return the location field which can be empty of have prexisting data:
+This will return the location field, which can be empty or have pre-existing data:
 ```js
 "location": {},
 ```
@@ -39,7 +39,7 @@ To modify the latitude and longitude you can perform a PUT request to a file wit
 
 ### Examples
 
-`PUT https://ramsa.openasset.com/REST/1/Files?withLocation=1` 
+`PUT https://tenant.openasset.com/REST/1/Files?withLocation=1` 
 - just the files endpoint will require the file id. the example uses 614 as a placeholder
 
 ```js
@@ -54,7 +54,7 @@ To modify the latitude and longitude you can perform a PUT request to a file wit
 ]
 ```
 
-`PUT https://ramsa.openasset.com/REST/1/Files/{file_id}?withLocation=1`
+`PUT https://tenant.openasset.com/REST/1/Files/{file_id}?withLocation=1`
 ```js
 {
     "location": {
