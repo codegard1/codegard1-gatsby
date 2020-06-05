@@ -40,3 +40,15 @@ Goal: establish a network between the two hosts that is strictly for ISCSi traff
 6. Create an associated target that connects the backup2 target with the backup2 extent. Set the LUN ID to an otherwise unused number
 
 ![Configure ISCSI Portal](/assets/annotation-2020-06-03-133246.png "Figure 3")
+
+## Configure Second NIC on ESXi
+
+1. Create a Virtual Switch for ISCSi using the unused NIC
+2. Create a new Port Group for ISCSi, VLAN ID 0
+3. Create a new VMKernel w/ the ISCSi Switch and the ISCSi Port Group
+
+   IP: 192.168.2.201
+
+   IPv^ Autoconfigure: Yes
+
+   No Services
