@@ -1,7 +1,7 @@
 ---
 tags:
   - ''
-published: true
+published: false
 date: 2020-07-30T23:42:45.076Z
 title: New NAS
 ---
