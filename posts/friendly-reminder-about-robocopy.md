@@ -1,11 +1,11 @@
 ---
 tags:
-  - Windows
-  - Command Line
+  - windows
+  - command line
   - robocopy
   - data management
   - dos
-  - PowerShell
+  - powershell
 published: true
 date: 2020-09-02T19:00:42.836Z
 title: Friendly reminder about robocopy
