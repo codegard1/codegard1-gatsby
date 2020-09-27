@@ -25,7 +25,7 @@ robocopy <source> <destination> [<file>[ ...]] [<options>]robocopy <source> <des
 Copy all files from from `\\Share\Media\Photos` to `D:\Pictures` and preserve the directory structure, file attributes and timestamps:
 
 ```
-robocopy \\Share\Media\Photos /copy:DAT /mt /z /mir /v /bytes
+robocopy \\Share\Media\Photos D:\Pictures /copy:DAT /mt /z /mir /v /bytes
 ```
 
 - `copy:DAT` - copy Data, Attributes, and Timestamps (but not Security, Owner, or Audit information)
