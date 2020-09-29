@@ -1,5 +1,5 @@
 import "office-ui-fabric-react/dist/css/fabric.min.css";
-import "./Table.css";
+// import "./Table.css";
 import React from "react";
 import { Fabric } from "office-ui-fabric-react/lib/Fabric";
 import {
@@ -115,8 +115,7 @@ export default class Table extends BaseComponent {
 
     return (
       <Fabric>
-        <div id="Table">
-          <div className="ms-Grid ms-fadeIn400">
+        <div id="Table" className="ms-Grid ms-fadeIn400">
             <div className="ms-Grid-row">
               <div className="ms-Grid-col ms-sm12">
                 {this.state.isMessageBarVisible && (
@@ -171,7 +170,6 @@ export default class Table extends BaseComponent {
 
             <OptionsPanel gameStatus={this.state.gameStatus} />
           </div>
-        </div>
       </Fabric>
     );
   }

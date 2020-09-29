@@ -18,9 +18,6 @@ const BlackJackPage = ({ data }) => {
         </div>
         <div className="post-list-main">
           <Table/>
-          <div className="mt-4 text-center">
-          Centered text
-          </div>
         </div>
       </div>
     </Layout>
