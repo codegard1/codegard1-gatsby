@@ -17,14 +17,14 @@ Initially I was using ctrl+c, ctrl+v to move files from place to place, but this
 Today I learned about `robocopy`, a command-line tool (from DOS) for copying files from one place to another that allows for granular control over what metadata is copied with the files, and even allows you to watch a folder for changes. 
 
 ### Syntax
-```
+```powershell
 robocopy <source> <destination> [<file>[ ...]] [<options>]robocopy <source> <destination> [<file>[ ...]] [<options>]
 ```
 
 ### Simple Example
 Copy all files from from `\\Share\Media\Photos` to `D:\Pictures` and preserve the directory structure, file attributes and timestamps:
 
-```
+```powershell
 robocopy \\Share\Media\Photos D:\Pictures /copy:DAT /mt /z /mir /v /bytes
 ```
 
