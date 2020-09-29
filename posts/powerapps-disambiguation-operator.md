@@ -1,6 +1,6 @@
 ---
 tags:
-  - PowerApps
+  - powerapps
 published: true
 date: 2020-09-09T20:51:27.029Z
 title: PowerApps Disambiguation Operator
