@@ -6,9 +6,9 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar/Sidebar"
 
+import Table from "../components/blackjack/Table";
+
 const BlackJackPage = ({ data }) => {
-
-
   return (
     <Layout>
       <SEO title="Blackjack" keywords={[`gatsby`, `javascript`, `react`, `web development`, `blackjack`]} />
@@ -17,7 +17,7 @@ const BlackJackPage = ({ data }) => {
           <Sidebar />
         </div>
         <div className="post-list-main">
-          Blackjack game
+          <Table/>
           <div className="mt-4 text-center">
           Centered text
           </div>
