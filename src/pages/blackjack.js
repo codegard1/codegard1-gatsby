@@ -17,6 +17,8 @@ const BlackJackPage = ({ data }) => {
           <Sidebar />
         </div>
         <div className="post-list-main">
+          <h2>Chris's Blackjack</h2>
+          <p><a href="https://github.com/codegard1/blackjack" target="_blank">View repository on Github</a></p>
           <Table/>
         </div>
       </div>
