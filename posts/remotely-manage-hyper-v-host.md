@@ -18,7 +18,7 @@ First we have to enable PSRemoting on both the client and server, then add the s
 1. On the Hyper-V host to be managed, open a Windows PowerShell session as Administrator.
 2. Create the necessary firewall rules for private network zones:
 
-   ```ps
+   ```powershell
    Enable-PSRemoting
    ```
 3. To allow remote access on public zones, enable firewall rules for CredSSP and WinRM:
@@ -32,7 +32,7 @@ Next, configure the computer you'll use to manage the Hyper-V host.
 1. Open a Windows PowerShell session as Administrator.
 2. Run these commands:
 
-   ```ps
+   ```powershell
    Set-Item WSMan:\localhost\Client\TrustedHosts -Value "fqdn-of-hyper-v-host"
    Enable-WSManCredSSP -Role client - DelegateComputer "fqdn-of-hyper-v-host"
    ```

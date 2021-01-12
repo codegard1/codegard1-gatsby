@@ -16,7 +16,7 @@ The following snippet is clipped from the below page:
 <https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7.1#ubuntu-2004>
 
 ## Installation via Package Repository - Ubuntu 20.04
-```sh
+```shell
 # Update the list of packages
 sudo apt-get update
 # Install pre-requisite packages.

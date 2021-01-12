@@ -9,7 +9,8 @@ title: ImageMagick Notes
 # Gist 
 
 **Imagemagick** is a powerful command-line tool for editing images. This page includes some notes for how to use ImageMagick for simple image resizing tasks. This is useful because ImageMagick is lighter than Bridge or Photoshop and, when used with PowerShell, can help you make changes to a large number of images in a short amount of time. 
-
+
+
 
 ## Home page
 https://imagemagick.org/index.php
@@ -36,7 +37,7 @@ Below are some examples of useful ImageMagick command-line expressions. In each 
 ### Combine ImageMagick commands with PowerShell loops for batch processing
 - The below PS will get all JPG files in the current directory and convert them to PNG
    
-   ```ps
+   ```powershell
    Get-ChildItem -Filter "*.png" | % { $n = $_.Name -Replace "png","jpg"; magick convert $_ $n }
    ```
 
@@ -69,7 +70,7 @@ You can specify whether _not_ to resize files that are larger or smaller than th
 - Use `>` to rotate the image only if _its width exceeds the height_. `<` rotates the image only if _its width is less than the height_. For example, if you specify `-rotate "-90>"` and the image size is 480x640, the image is not rotated. However, if the image is 640x480, it is rotated by -90 degrees. If you use `>` or `<`, enclose it in quotation marks to prevent it from being misinterpreted as a file redirection. 
 - Empty triangles in the corners, left over from rotating the image, are filled with the background color.
 
-   ```ps
+   ```powershell
    $> magick convert -resize "1600x1200>" -rotate "90>"
    ```
 
