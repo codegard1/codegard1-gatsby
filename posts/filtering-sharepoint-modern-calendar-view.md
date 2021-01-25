@@ -25,9 +25,9 @@ https://<tenant>.sharepoint.com/<site>/Lists/PTOCalendar/ModernCalendar.aspx?use
 
 In the first screenshot the list is unfiltered. In the second screenshot we only see items where `ApprovalStaus` = "Approved".
 
-![Modern Calendar Unfiltered](assets/moderncalendarfiltering-1.png "Modern Calendar Unfiltered")
+![Modern Calendar Unfiltered](/assets/moderncalendarfiltering-1.png "Modern Calendar Unfiltered")
 
-![Modern Calendar Filtered](assets/moderncalendarfiltering-2.png "Modern Calendar Filtered")
+![Modern Calendar Filtered](/assets/moderncalendarfiltering-2.png "Modern Calendar Filtered")
 
 
 
