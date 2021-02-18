@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Sidebar from "../components/sidebar/Sidebar"
 
+// Please ensure that this builds successfully before deploying
 import Table from "../components/blackjack/Table";
 
 const BlackJackPage = ({ data }) => {
@@ -18,8 +19,12 @@ const BlackJackPage = ({ data }) => {
         </div>
         <div className="post-list-main">
           <h2>Chris's Blackjack</h2>
-          <p><a href="https://github.com/codegard1/blackjack" target="_blank">View repository on Github</a></p>
-          <Table/>
+          <p>
+            <a href="https://github.com/codegard1/blackjack" target="_blank" rel="noreferrer">Here's the github repo</a>
+            <br />
+            <a href="https://codegard1-blackjack.netlify.app/" target="_blank" rel="noreferrer">Here's a more experimental version of the app</a>
+          </p>
+          <Table />
         </div>
       </div>
     </Layout>
