@@ -22,7 +22,7 @@ const BlackJackPage = ({ data }) => {
           <p>
             <a href="https://github.com/codegard1/blackjack" target="_blank" rel="noreferrer">Here's the github repo</a>
             <br />
-            <a href="https://codegard1-blackjack.netlify.app/" target="_blank" rel="noreferrer">Here's a more experimental version of the app</a>
+            <a href="https://codegard1-blackjack.netlify.app/" target="_blank" rel="noreferrer">Here's a more experimental version of the app</a> (may not work well)
           </p>
           <Table />
         </div>
