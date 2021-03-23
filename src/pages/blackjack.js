@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import Sidebar from "../components/sidebar/Sidebar"
 
 // Please ensure that this builds successfully before deploying
-import Table from "../components/blackjack/src/components/blackjack/Table.js";
+import Table from "../components/blackjack/src/components/blackjack/Table";
 
 const BlackJackPage = ({ data }) => {
   return (
