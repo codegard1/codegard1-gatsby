@@ -1,3 +1,3 @@
 [submodule "src/components/blackjack"]
 	path = src/components/blackjack
-	url = git@github.com:codegard1/blackjack.git
+	url = https://github.com/codegard1/blackjack.git
