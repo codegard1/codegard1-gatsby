@@ -14,7 +14,7 @@
     "bootstrap": "^4.6.0",
     "emotion": "^11.0.0",
     "flux": "^4.0.1",
-    "gatsby": "^3.1.1",
+    "gatsby": "^3.3.1",
     "gatsby-plugin-emotion": "^6.1.0",
     "gatsby-plugin-google-analytics": "^3.1.0",
     "gatsby-plugin-google-fonts": "^1.0.1",
@@ -44,7 +44,8 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
-    "react-masonry-component": "^6.2.1"
+    "react-masonry-component": "^6.2.1",
+    "typescript": "^4.2.4"
   },
   "devDependencies": {
     "@types/react": "^17.0.0",
