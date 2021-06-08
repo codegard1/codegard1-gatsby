@@ -3,6 +3,7 @@ import {
     FaLinkedin,
     FaGithubSquare,
     FaStackOverflow,
+    FaSoundcloud,
     // FaFreeCodeCamp,
     // FaTwitterSquare
 } from "react-icons/fa"
@@ -28,6 +29,12 @@ const SocialLinks = ({ contacts }) => {
                 href={contacts.stackoverflow}>
                 <span title="Stack Overflow">
                     <FaStackOverflow size={26} style={{ color: "secondary" }} />
+                </span>
+            </a>
+            <a className="text-secondary p-2"
+                href={contacts.soundcloud}>
+                <span title="Soundcloud">
+                    <FaSoundcloud size={26} style={{ color: "secondary" }} />
                 </span>
             </a>
         </div>

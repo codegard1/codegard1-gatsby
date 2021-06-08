@@ -15,6 +15,7 @@ module.exports = {
         "https://stackoverflow.com/users/2852366/chris-odegard?tab=profile",
       freecodecamp: "https://www.freecodecamp.org/",
       twitter: "https://twitter.com",
+      soundcloud: "https://soundcloud.com/ciaervo"
     },
   },
   labels: [
