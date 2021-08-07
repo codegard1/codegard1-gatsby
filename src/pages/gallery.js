@@ -2,6 +2,9 @@ import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
+
+import { Link, graphql } from "gatsby";
+
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
 
@@ -9,56 +12,28 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Sidebar from "../components/sidebar/Sidebar";
 
-const photos = [
-  {
-    src: "assets/photos/193434008_2823750297864666_1119114594457702579_n.jpg",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "assets/photos/193709507_2823750434531319_5025857521566616487_n.jpg",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
-    width: 4,
-    height: 3
+
+
+// allImageSharp {
+//   edges {
+//     node {
+//       original {
+//         src
+//       }
+//     }
+//   }
+// }
+const GalleryPage = ({ data }) => {
+  console.log(data);
+  const photos = data.allImageSharp.edges.map(e => {
+    return {
+      src: e.node.original.src,
+      height: (e.node.original.height / 2),
+      width: (e.node.original.width / 2)
+    }
   }
-];
+  );
 
-
-function GalleryPage({ data }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
@@ -88,7 +63,7 @@ function GalleryPage({ data }) {
           <h2>Gallery</h2>
           <p>
             Eat shit, Instagram
-            </p>
+          </p>
 
 
           <Gallery photos={photos} onClick={openLightbox} />
@@ -111,5 +86,21 @@ function GalleryPage({ data }) {
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+query {
+  allImageSharp {
+    edges {
+      node {
+        original {
+          src,
+          width,
+          height
+        }
+      }
+    }
+  }
+}
+`;
 
 export default GalleryPage;
