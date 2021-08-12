@@ -9,59 +9,21 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Sidebar from "../components/sidebar/Sidebar";
 
-const photos = [
-  {
-    src: "assets/photos/193434008_2823750297864666_1119114594457702579_n.jpg",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "assets/photos/193709507_2823750434531319_5025857521566616487_n.jpg",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/qDkso9nvCg0/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/iecJiKe_RNg/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/epcsn8Ed8kY/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/NQSWvyVRIJk/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/zh7GEuORbUw/600x799",
-    width: 3,
-    height: 4
-  },
-  {
-    src: "https://source.unsplash.com/PpOHJezOalU/800x599",
-    width: 4,
-    height: 3
-  },
-  {
-    src: "https://source.unsplash.com/I1ASdgphUH4/800x599",
-    width: 4,
-    height: 3
-  }
-];
-
+// Public url prefix for images store in Azure
+const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
 function GalleryPage({ data }) {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
+  const photos = data.allInstagramPostsJson.nodes.map((photo,index) => ({
+    src: blobStorageBaseUrl + photo.media[0].uri,
+    title: photo.media[0].title,
+    height: 1,
+    width: 1, 
+    key: `photo_${photo.id}`
+  }));
+  
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
@@ -111,5 +73,19 @@ function GalleryPage({ data }) {
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+query {
+  allInstagramPostsJson(limit: 100, sort: {order: DESC, fields: media___creation_timestamp}) {
+    nodes {
+      media {
+        uri
+        creation_timestamp
+        title
+      }
+      id
+    }
+  }
+}`;
 
 export default GalleryPage;
