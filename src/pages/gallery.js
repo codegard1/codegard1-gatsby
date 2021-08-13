@@ -12,7 +12,8 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Sidebar from "../components/sidebar/Sidebar";
 
-
+// Public url prefix for images store in Azure
+const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
 // allImageSharp {
 //   edges {
@@ -37,6 +38,14 @@ const GalleryPage = ({ data }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
+  const photos = data.allInstagramPostsJson.nodes.map((photo,index) => ({
+    src: blobStorageBaseUrl + photo.media[0].uri,
+    title: photo.media[0].title,
+    height: 1,
+    width: 1, 
+    key: `photo_${photo.id}`
+  }));
+  
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
@@ -89,18 +98,16 @@ const GalleryPage = ({ data }) => {
 
 export const pageQuery = graphql`
 query {
-  allImageSharp {
-    edges {
-      node {
-        original {
-          src,
-          width,
-          height
-        }
+  allInstagramPostsJson(limit: 100, sort: {order: DESC, fields: media___creation_timestamp}) {
+    nodes {
+      media {
+        uri
+        creation_timestamp
+        title
       }
+      id
     }
   }
-}
-`;
+}`;
 
 export default GalleryPage;
