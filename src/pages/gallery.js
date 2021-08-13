@@ -15,25 +15,9 @@ import Sidebar from "../components/sidebar/Sidebar";
 // Public url prefix for images store in Azure
 const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
-// allImageSharp {
-//   edges {
-//     node {
-//       original {
-//         src
-//       }
-//     }
-//   }
-// }
+
 const GalleryPage = ({ data }) => {
   console.log(data);
-  const photos = data.allImageSharp.edges.map(e => {
-    return {
-      src: e.node.original.src,
-      height: (e.node.original.height / 2),
-      width: (e.node.original.width / 2)
-    }
-  }
-  );
 
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
