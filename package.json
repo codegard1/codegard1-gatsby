@@ -57,14 +57,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run process; gatsby build",
-    "develop": "npm run process; gatsby develop",
+    "build": "npm run preprocess; gatsby build",
+    "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean && rm -r node_modules",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
-    "process": "node Get\\ Image\\ Dimensions.js"
+    "preprocess": "node PreprocessInstagramJson.js"
   },
   "repository": {
     "type": "git",

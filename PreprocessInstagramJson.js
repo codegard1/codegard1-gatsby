@@ -1,7 +1,6 @@
 const http = require('https');
-const sizeOf = require('image-size');
-const request = require('request');
 const fs = require('fs');
+const sizeOf = require('image-size');
 
 // Public url prefix for images store in Azure
 const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
