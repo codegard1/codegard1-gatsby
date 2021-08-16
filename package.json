@@ -27,7 +27,6 @@
     "gatsby-transformer-json": "^2.9.0",
     "gatsby-transformer-remark": "^2.14.0",
     "gatsby-transformer-sharp": "^2.10.0",
-    "immutable": "^3.8.2",
     "keymirror": "^0.1.1",
     "lodash": "^4.17.20",
     "netlify-cms-app": "^2.14.10",
@@ -40,11 +39,15 @@
     "react-dom": "^16.14.0",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.11.0",
-    "react-masonry-component": "^6.2.1"
+    "react-images": "^1.2.0-beta.7",
+    "react-masonry-component": "^6.2.1",
+    "react-photo-gallery": "^8.0.0",
+    "react-photo-masonry": "^8.0.0"
   },
   "devDependencies": {
     "@types/react": "^16.14.2",
     "@types/react-dom": "^16.9.10",
+    "image-size": "^1.0.0",
     "prettier": "^1.19.1",
     "react-dev-utils": "^11.0.1",
     "react-scripts": "^4.0.1"
@@ -54,13 +57,14 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npm run preprocess; gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean && rm -r node_modules",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "preprocess": "node PreprocessInstagramJson.js"
   },
   "repository": {
     "type": "git",
