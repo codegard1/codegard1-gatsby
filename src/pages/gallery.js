@@ -18,15 +18,13 @@ const blobStorageBaseUrl = `https://gadzooks.blob.core.windows.net/instagram/`;
 
 const GalleryPage = ({ data }) => {
   console.log(data);
-
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-  const photos = data.allInstagramPostsJson.nodes.map(photo => ({
-    src: blobStorageBaseUrl + photo.media[0].uri,
-    title: photo.media[0].title,
-    height: 1,
-    width: 1,
+  // Pre-process image data from JSON
+  const photos = data.allInstagramPosts1Json.nodes.map(photo => ({
+    ...photo,
+    src: blobStorageBaseUrl + photo.uri,
     key: `photo_${photo.id}`
   }));
 
@@ -56,7 +54,7 @@ const GalleryPage = ({ data }) => {
         <div className="post-list-main">
           <h2>Gallery</h2>
           <p>
-            Eat shit, Instagram
+            Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">react-photo-gallery</a>.
           </p>
 
 
@@ -64,9 +62,9 @@ const GalleryPage = ({ data }) => {
             photos={photos}
             onClick={openLightbox}
             margin={5}
-            direction={'row'}
-            columns={6}
-            targetRowHeight={100}
+          // direction={'row'}
+          // columns={6}
+          // targetRowHeight={100}
           />
           <ModalGateway>
             {viewerIsOpen ? (
@@ -90,17 +88,20 @@ const GalleryPage = ({ data }) => {
 
 export const pageQuery = graphql`
 query {
-  allInstagramPostsJson(limit: 100, sort: {order: DESC, fields: media___creation_timestamp}, filter: {media: {elemMatch: {uri: {regex: "/jpg$/"}}}}) {
+  allInstagramPosts1Json(limit: 50, sort: {fields: creation_timestamp, order: DESC}) {
     nodes {
-      media {
-        uri
-        creation_timestamp
-        title
-      }
+      creation_timestamp
+      height
+      width
+      uri
+      type
+      title
+      ratio
       id
     }
   }
 }
+
 `;
 
 export default GalleryPage;
