@@ -33,7 +33,7 @@ jobs:
           output_location: "" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          NODE_VERSION: 14,
+          NODE_VERSION: 14.17.0,
           NPM_VERSION: 7.6.3
 
   close_pull_request_job:
