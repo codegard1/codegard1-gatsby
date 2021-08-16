@@ -22,14 +22,14 @@ const GalleryPage = ({ data }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
 
-  const photos = data.allInstagramPostsJson.nodes.map((photo,index) => ({
+  const photos = data.allInstagramPostsJson.nodes.map(photo => ({
     src: blobStorageBaseUrl + photo.media[0].uri,
     title: photo.media[0].title,
     height: 1,
-    width: 1, 
+    width: 1,
     key: `photo_${photo.id}`
   }));
-  
+
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
     setViewerIsOpen(true);
@@ -45,7 +45,8 @@ const GalleryPage = ({ data }) => {
         title="Gallery"
         keywords={[
           `gallery`,
-          `photos`
+          `photos`,
+          `Instagram`
         ]}
       />
       <div className="index-main">
@@ -59,7 +60,14 @@ const GalleryPage = ({ data }) => {
           </p>
 
 
-          <Gallery photos={photos} onClick={openLightbox} />
+          <Gallery
+            photos={photos}
+            onClick={openLightbox}
+            margin={5}
+            direction={'row'}
+            columns={6}
+            targetRowHeight={100}
+          />
           <ModalGateway>
             {viewerIsOpen ? (
               <Modal onClose={closeLightbox}>
@@ -82,7 +90,7 @@ const GalleryPage = ({ data }) => {
 
 export const pageQuery = graphql`
 query {
-  allInstagramPostsJson(limit: 100, sort: {order: DESC, fields: media___creation_timestamp}) {
+  allInstagramPostsJson(limit: 100, sort: {order: DESC, fields: media___creation_timestamp}, filter: {media: {elemMatch: {uri: {regex: "/jpg$/"}}}}) {
     nodes {
       media {
         uri
@@ -92,6 +100,7 @@ query {
       id
     }
   }
-}`;
+}
+`;
 
 export default GalleryPage;
