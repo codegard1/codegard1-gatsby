@@ -1,6 +1,5 @@
 import React from "react";
 import * as T from "prop-types";
-import Masonry from "react-masonry-component";
 
 /* custom stuff */
 import BaseComponent from "../BaseComponent";
@@ -111,15 +110,7 @@ class DeckContainer extends BaseComponent {
             <span data-title={handValueString} className="ms-font-l" />
           )}
         {this.state.isDeckVisible && (
-          <Masonry
-            className={"deck"}
-            elementType={"div"}
-            disableImagesLoaded={false}
-            updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-            options={masonryOptions}
-          >
             {cardElements}
-          </Masonry>
         )}
       </div>
     );

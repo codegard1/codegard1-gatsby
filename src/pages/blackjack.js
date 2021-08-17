@@ -38,7 +38,7 @@ const BlackJackPage = ({ data }) => {
             </a>
             <br />
             <a
-              href="https://codegard1-blackjack.netlify.app/"
+              href="https://mango-cliff-08390e60f.azurestaticapps.net"
               target="_blank"
               rel="noreferrer"
             >
