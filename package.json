@@ -6,6 +6,7 @@
   "author": "codegard1 <https://github.com/codegard1>",
   "dependencies": {
     "@emotion/core": "^10.1.1",
+    "@fluentui/react": "^8.28.2",
     "@uifabric/icons": "^5.8.0",
     "bootstrap": "^4.5.3",
     "emotion": "^10.0.27",
