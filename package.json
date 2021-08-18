@@ -34,23 +34,20 @@
     "office-ui-fabric-react": "^5.135.6",
     "prismjs": "^1.23.0",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
+    "react": "^17.0.2",
     "react-bootstrap": "^1.4.3",
-    "react-custom-share": "^0.4.8",
-    "react-dom": "^16.14.0",
+    "react-dom": "^17.0.2",
     "react-helmet": "^5.2.1",
     "react-icons": "^3.11.0",
     "react-images": "^1.2.0-beta.7",
-    "react-masonry-component": "^6.2.1",
-    "react-photo-gallery": "^8.0.0",
-    "react-photo-masonry": "^8.0.0"
+    "react-photo-gallery": "^8.0.0"
   },
   "devDependencies": {
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
+    "@types/react": "^17.0.18",
+    "@types/react-dom": "^17.0.9",
     "image-size": "^1.0.0",
     "prettier": "^1.19.1",
-    "react-dev-utils": "^11.0.1",
+    "react-dev-utils": "^12.0.0-next.31",
     "react-scripts": "^4.0.1"
   },
   "keywords": [
@@ -63,7 +60,7 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean && rm -r node_modules",
+    "clean": "gatsby clean; rm -r node_modules",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "preprocess": "node PreprocessInstagramJson.js"
   },
