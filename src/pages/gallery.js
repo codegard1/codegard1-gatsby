@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-// import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 
 import { graphql } from "gatsby";
@@ -13,20 +12,20 @@ import Sidebar from "../components/sidebar/Sidebar";
 
 import { FocusZone } from '@fluentui/react/lib/FocusZone';
 import { List } from '@fluentui/react/lib/List';
-import { ITheme, getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { getTheme, mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
 
 const theme = getTheme();
 const { palette, fonts } = theme;
 const ROWS_PER_PAGE = 1;
-const MAX_ROW_HEIGHT = 250;
+const MAX_ROW_HEIGHT = 200;
 const classNames = mergeStyleSets({
-  listGridExample: {
+  listGrid: {
     overflow: 'hidden',
     fontSize: 0,
     position: 'relative',
   },
-  listGridExampleTile: {
+  listGridTile: {
     textAlign: 'center',
     outline: 'none',
     position: 'relative',
@@ -45,17 +44,17 @@ const classNames = mergeStyleSets({
       },
     },
   },
-  listGridExampleSizer: {
+  listGridSizer: {
     paddingBottom: '100%',
   },
-  listGridExamplePadder: {
+  listGridPadder: {
     position: 'absolute',
-    left: 2,
+    left: 5,
     top: 2,
-    right: 2,
+    right: 5,
     bottom: 2,
   },
-  listGridExampleLabel: {
+  listGridLabel: {
     background: 'rgba(0, 0, 0, 0.3)',
     color: '#FFFFFF',
     position: 'absolute',
@@ -66,7 +65,7 @@ const classNames = mergeStyleSets({
     fontSize: fonts.small.fontSize,
     boxSizing: 'border-box',
   },
-  listGridExampleImage: {
+  listGridImage: {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -86,6 +85,8 @@ const GalleryPage = ({ data }) => {
   const photos = useConst(
     data.allInstagramPosts1Json.nodes.map(photo => ({
       ...photo,
+      // height: (photo.height / 2),
+      // width: (photo.width / 2),
       src: blobStorageBaseUrl + photo.uri,
       key: `photo_${photo.id}`
     }))
@@ -115,17 +116,17 @@ const GalleryPage = ({ data }) => {
   const onRenderCell = React.useCallback((item, index) => {
     return (
       <div
-        className={classNames.listGridExampleTile}
+        className={classNames.listGridTile}
         data-is-focusable
         style={{
           width: 100 / columnCount.current + '%',
         }}
         onClick={(e) => { openLightbox(e, { item, index }) }}
       >
-        <div className={classNames.listGridExampleSizer}>
-          <div className={classNames.listGridExamplePadder}>
-            <img src={item.src} className={classNames.listGridExampleImage} />
-            <span className={classNames.listGridExampleLabel}>{item.title}</span>
+        <div className={classNames.listGridSizer}>
+          <div className={classNames.listGridPadder}>
+            <img src={item.src} className={classNames.listGridImage} />
+            {/* <span className={classNames.listGridLabel}>{item.title}</span> */}
           </div>
         </div>
       </div>
@@ -158,23 +159,12 @@ const GalleryPage = ({ data }) => {
         <div className="post-list-main">
           <h2>Gallery</h2>
           <p>
-            Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">react-photo-gallery</a>.
+            Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
           </p>
-
-
-          {/* <Gallery
-          photos={photos}
-          onClick={openLightbox}
-          margin={5}
-          direction={'row'}
-          columns={6}
-          targetRowHeight={100}
-          /> */}
-
 
           <FocusZone>
             <List
-              className={classNames.listGridExample}
+              className={classNames.listGrid}
               items={photos}
               getItemCountForPage={getItemCountForPage}
               getPageHeight={getPageHeight}
@@ -204,7 +194,7 @@ const GalleryPage = ({ data }) => {
 
 export const pageQuery = graphql`
 query {
-  allInstagramPosts1Json(limit: 200, sort: {fields: creation_timestamp, order: DESC}) {
+  allInstagramPosts1Json(limit: 100, sort: {fields: creation_timestamp, order: DESC}) {
     nodes {
       creation_timestamp
       height
