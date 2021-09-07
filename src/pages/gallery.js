@@ -161,6 +161,7 @@ const GalleryPage = ({ data }) => {
           <p>
             Custom implementation of my own <a target="_blank" href="https://www.instagram.com/codegard1/">Instagram feed</a> using <a href="https://azure.microsoft.com/en-us/services/storage/blobs/" target="_blank">Azure Blob Storage </a> and <a href="https://github.com/neptunian/react-photo-gallery" target="_blank">List Grid</a>.
           </p>
+          <p>See also: <a href="https://github.com/codegard1/imagal3/" target="_blank">Imagal3 on GitHub</p>
 
           <FocusZone>
             <List
