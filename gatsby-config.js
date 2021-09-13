@@ -24,7 +24,21 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-json`,
-    `gatsby-plugin-sharp`,
+    // `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        path: `${__dirname}/images`,
+        name: `images`,
+      }
+    },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        path: `${__dirname}/images/instagram`,
+        name: `instagram`,
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -104,9 +118,9 @@ module.exports = {
         // siteSpeedSampleRate: 10,
         cookieDomain: "christopherodegard.com",
       },
-    }
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }
