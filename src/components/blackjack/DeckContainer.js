@@ -109,9 +109,7 @@ class DeckContainer extends BaseComponent {
           this.props.isHandValueVisible && (
             <span data-title={handValueString} className="ms-font-l" />
           )}
-        {this.state.isDeckVisible && (
-            {cardElements}
-        )}
+        {this.state.isDeckVisible && (cardElements)}
       </div>
     );
   }
