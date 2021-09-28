@@ -83,7 +83,7 @@ const GalleryPage = ({ data }) => {
 
   // Pre-process image data from JSON
   const photos = useConst(
-    data.allInstagramPosts1Json.nodes.map(photo => ({
+    data.allInstagramPostsJson.nodes.map(photo => ({
       ...photo,
       // height: (photo.height / 2),
       // width: (photo.width / 2),
@@ -195,7 +195,7 @@ const GalleryPage = ({ data }) => {
 
 export const pageQuery = graphql`
 query {
-  allInstagramPosts1Json(limit: 100, sort: {fields: creation_timestamp, order: DESC}) {
+  allInstagramPostsJson(limit: 100, sort: {fields: creation_timestamp, order: DESC}) {
     nodes {
       creation_timestamp
       height
