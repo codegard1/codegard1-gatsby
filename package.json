@@ -55,7 +55,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run preprocess; gatsby build; cp keybase.txt ./public/keybase.txt",
+    "build": "npm run preprocess; gatsby build;",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
