@@ -38,7 +38,7 @@ const BlackJackPage = ({ data }) => {
             </a>
             <br />
             <a
-              href="https://mango-cliff-08390e60f.azurestaticapps.net"
+              href="https://blackjack.ciaervo.com"
               target="_blank"
               rel="noreferrer"
             >
