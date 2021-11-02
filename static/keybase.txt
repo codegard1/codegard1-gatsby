@@ -73,3 +73,60 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/ciaervo
 
 ==================================================================
+
+==================================================================
+https://keybase.io/ciaervo
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.ciaervo.com
+  * I am ciaervo (https://keybase.io/ciaervo) on keybase.
+  * I have a public key ASBbUUngUjdBa_ylr2vnrjaVHdai7qkoffcsXTnHn_VO9Ao
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01205b5149e05237416bfca5af6be7ae36951dd6a2eea9287df72c5d39c79ff54ef40a",
+      "host": "keybase.io",
+      "kid": "01205b5149e05237416bfca5af6be7ae36951dd6a2eea9287df72c5d39c79ff54ef40a",
+      "uid": "89579f5fe42e494526b442d068e19f19",
+      "username": "ciaervo"
+    },
+    "merkle_root": {
+      "ctime": 1635883924,
+      "hash": "1e44b306c8c737f402f4e73058320f5cb63d9c6b05c5a06171064c515eea898e2b277e91485055de6400ea8b0b6e3d18391ee4893f5948e4a242da6aec511d40",
+      "hash_meta": "62d516e07f8f9d325aab0b3fe3841deecdc7ba851efb4e592f8c9c14558d56ad",
+      "seqno": 21123040
+    },
+    "service": {
+      "entropy": "+oLOCybB4BHk9dtgQjZsBY6h",
+      "hostname": "www.ciaervo.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.8.0"
+  },
+  "ctime": 1635883954,
+  "expire_in": 504576000,
+  "prev": "5d50fdb89ab77dc86bc8c6923e883a895243780ee5c9e4e223e8bae368f9befd",
+  "seqno": 15,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgW1FJ4FI3QWv8pa9r5642lR3Wou6pKH33LF05x5/1TvQKp3BheWxvYWTESpcCD8QgXVD9uJq3fchryMaSPog6iVJDeA7lyeTiI+i642j5vv3EIE6daESnbFv/GuQjD81a6VWZ+DT8p2pK8sbMhKumFpDAAgHCo3NpZ8RA+SH7vv5tFPQOPo8xJg193vl22G7250+XmXU7gZHYcWFEcsl7x9Bg5X7xtUC7SwNU29n+GDTzwBfM8JKO8rulCahzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIPpdbKpBXvJEYprY7tuPXyp2MPZlIJLCBvj/2ELK76Neo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/ciaervo
+
+==================================================================
