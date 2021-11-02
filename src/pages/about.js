@@ -36,8 +36,7 @@ const AboutPage = props => {
           </div>
         </div>
       </div>
-    </div>
-    </Layout >
+    </Layout>
   );
 };
 
